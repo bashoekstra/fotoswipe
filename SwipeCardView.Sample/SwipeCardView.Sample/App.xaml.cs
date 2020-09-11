@@ -1,3 +1,4 @@
+using mobile_test.Views;
 using SwipeCardView.Sample.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,7 +16,7 @@ namespace SwipeCardView.Sample
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()

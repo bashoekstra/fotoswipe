@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_test.Views.accauntPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:mobile_test.ViewModels"  
+             xmlns:model="clr-namespace:mobile_test.Models"  
+             x:Name="BrowseItemsPage">
+    <RefreshView x:DataType="local:accauntViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
+        <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Items}"
+                SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Padding="10" x:DataType="model:Item">
+                        <Label Text="Name:" FontSize="Medium" />
+                        <Label Text="{Binding firstname}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                        <Label Text="email:" FontSize="Medium" />
+                        <Label Text="{Binding email}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                        <Label Text="Age:" FontSize="Medium" />
+                        <Label Text="{Binding age}" 
+                            LineBreakMode="NoWrap"
+                            Style="{DynamicResource ListItemDetailTextStyle}"
+                            FontSize="13" />
+                        <Label Text="Adress:" FontSize="Medium" />
+                        <Label Text="{Binding adress}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                        <Label Text="City:" FontSize="Medium" />
+                        <Label Text="{Binding city}" 
+                            LineBreakMode="NoWrap" 
+                            Style="{DynamicResource ListItemTextStyle}" 
+                            FontSize="16" />
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:ItemsViewModel}}, Path=ItemTapped}"		
+                                CommandParameter="{Binding .}">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+    
+    <!--<ContentPage.Content>
+        <StackLayout>
+            <StackLayout Spacing="20" Padding="15">
+                <Label Text="Name:" FontSize="Medium" />
+                <Label Text="{Binding Fullname}" FontSize="Small"/>
+                <Label Text="email:" FontSize="Medium" />
+                <Label Text="{Binding Email}" FontSize="Small"/>
+                <Label Text="Age:" FontSize="Medium" />
+                <Label Text="{Binding Age}" FontSize="Small"/>
+                <Label Text="Adress:" FontSize="Medium" />
+                <Label Text="{Binding Adress}" FontSize="Small"/>
+                <Label Text="City:" FontSize="Medium" />
+                <Label Text="{Binding City}" FontSize="Small"/>
+            </StackLayout>
+            <Button Margin="40,10,40,200" Text="click to update account"
+                        Command="{Binding gotocommand}"
+                        BackgroundColor="{StaticResource Primary}"
+                        TextColor="White" />
+        </StackLayout>
+    </ContentPage.Content>-->
+</ContentPage>

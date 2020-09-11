@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="mobile_test.Views.ItemDetailPage"
+             Title="{Binding Title}">
+
+    <StackLayout Spacing="20" Padding="15">
+        <Label Text="Name:" FontSize="Medium" />
+        <Label Text="{Binding Fullname}" FontSize="Small"/>
+        <Label Text="test:" FontSize="Medium" />
+        <Label Text="{Binding Useridentivier}" FontSize="Small"/>
+        <Label Text="Age:" FontSize="Medium" />
+        <Label Text="{Binding Age}" FontSize="Small"/>
+        <Label Text="Adress:" FontSize="Medium" />
+        <Label Text="{Binding Adress}" FontSize="Small"/>
+        <Label Text="City:" FontSize="Medium" />
+        <Label Text="{Binding City}" FontSize="Small"/>
+    </StackLayout>
+    
+</ContentPage>
