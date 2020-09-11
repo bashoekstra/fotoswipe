@@ -95,22 +95,22 @@ namespace SwipeCardView.Sample.ViewModel
         {
             // Photos are from https://unsplash.com/. Name and Age values are fictional.
 
-            Profiles.Add(new Profile { ProfileId = 1, Name = "Laura", Age = 24, Gender = Gender.Female, Photo = "p705193.jpg" });
-            Profiles.Add(new Profile { ProfileId = 2, Name = "Sophia", Age = 21, Gender = Gender.Female, Photo = "p597956.jpg" });
-            Profiles.Add(new Profile { ProfileId = 3, Name = "Anne", Age = 19, Gender = Gender.Female, Photo = "p497489.jpg" });
-            Profiles.Add(new Profile { ProfileId = 4, Name = "Yvonne ", Age = 27, Gender = Gender.Female, Photo = "p467499.jpg" });
-            Profiles.Add(new Profile { ProfileId = 5, Name = "Abby", Age = 25, Gender = Gender.Female, Photo = "p589739.jpg" });
-            Profiles.Add(new Profile { ProfileId = 6, Name = "Andressa", Age = 28, Gender = Gender.Female, Photo = "p453095.jpg" });
-            Profiles.Add(new Profile { ProfileId = 7, Name = "June", Age = 29, Gender = Gender.Female, Photo = "p503001.jpg" });
-            Profiles.Add(new Profile { ProfileId = 8, Name = "Kim", Age = 22, Gender = Gender.Female, Photo = "p627958.jpg" });
-            Profiles.Add(new Profile { ProfileId = 9, Name = "Denesha", Age = 26, Gender = Gender.Female, Photo = "p474893.jpg" });
-            Profiles.Add(new Profile { ProfileId = 10, Name = "Sasha", Age = 23, Gender = Gender.Female, Photo = "p458914.jpg" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Laura", Age = 24, Gender = Gender.Female, Photo = "p705193.jpg", City = "Ede" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Sophia", Age = 21, Gender = Gender.Female, Photo = "p597956.jpg", City = "Den-Haag" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Anne", Age = 19, Gender = Gender.Female, Photo = "p497489.jpg", City = "Amersfoort" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Yvonne ", Age = 27, Gender = Gender.Female, Photo = "p467499.jpg", City = "Amersfoort" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Abby", Age = 25, Gender = Gender.Female, Photo = "p589739.jpg", City = "Den-Haag" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Andressa", Age = 28, Gender = Gender.Female, Photo = "p453095.jpg", City = "Amsterdam" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "June", Age = 29, Gender = Gender.Female, Photo = "p503001.jpg", City = "Amersfoort" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Kim", Age = 22, Gender = Gender.Female, Photo = "p627958.jpg", City = "Nijmegen" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Denesha", Age = 26, Gender = Gender.Female, Photo = "p474893.jpg", City = "Den-Haag" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Sasha", Age = 23, Gender = Gender.Female, Photo = "p458914.jpg", City = "Wageningen" });
 
-            Profiles.Add(new Profile { ProfileId = 11, Name = "Austin", Age = 28, Gender = Gender.Male, Photo = "p378674.jpg" });
-            Profiles.Add(new Profile { ProfileId = 11, Name = "James", Age = 32, Gender = Gender.Male, Photo = "p398931.jpg" });
-            Profiles.Add(new Profile { ProfileId = 11, Name = "Chris", Age = 27, Gender = Gender.Male, Photo = "p401107.jpg" });
-            Profiles.Add(new Profile { ProfileId = 11, Name = "Alexander", Age = 30, Gender = Gender.Male, Photo = "p731150.jpg" });
-            Profiles.Add(new Profile { ProfileId = 11, Name = "Steve", Age = 31, Gender = Gender.Male, Photo = "p327144.jpg" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Austin", Age = 28, Gender = Gender.Male, Photo = "p378674.jpg", City = "Ede" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "James", Age = 32, Gender = Gender.Male, Photo = "p398931.jpg", City = "Amsterdam" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Chris", Age = 27, Gender = Gender.Male, Photo = "p401107.jpg", City = "Nijmegen" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Alexander", Age = 30, Gender = Gender.Male, Photo = "p731150.jpg", City = "Den-Haag" });
+            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Steve", Age = 31, Gender = Gender.Male, Photo = "p327144.jpg", City = "Wageningen" });
         }
     }
 }
