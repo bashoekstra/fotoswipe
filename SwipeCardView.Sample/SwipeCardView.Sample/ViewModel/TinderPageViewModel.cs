@@ -18,7 +18,7 @@ namespace SwipeCardView.Sample.ViewModel
 
         private uint _threshold;
 
-        public Command LoadProfilesCommand { get; }
+        
 
         public TinderPageViewModel()
         {
@@ -61,6 +61,9 @@ namespace SwipeCardView.Sample.ViewModel
         public ICommand ClearItemsCommand { get; }
 
         public ICommand AddItemsCommand { get; }
+
+        public Command LoadProfilesCommand { get; }
+
         public bool IsBusy { get; private set; }
 
         private void OnSwipedCommand(SwipedCardEventArgs eventArgs)

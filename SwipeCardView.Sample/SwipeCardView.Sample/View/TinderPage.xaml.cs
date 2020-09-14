@@ -14,7 +14,7 @@ namespace SwipeCardView.Sample.View
         {
             InitializeComponent();
             BindingContext = ViewModel = new TinderPageViewModel();
-
+            
             SwipeCardView.Dragging += OnDragging;
         }
 
