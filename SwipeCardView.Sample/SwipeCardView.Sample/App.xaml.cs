@@ -1,3 +1,5 @@
+using SwipeCardView.Sample.DAL;
+using SwipeCardView.Sample.Model;
 using SwipeCardView.Sample.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,6 +17,8 @@ namespace SwipeCardView.Sample
         {
             InitializeComponent();
 
+            DependencyService.Register<MockDataStore>();
+            DependencyService.Register<DataInterface<Profile>>();
             MainPage = new NavigationPage(new MainPage());
         }
 

@@ -1,27 +1,35 @@
 ﻿using MLToolkit.Forms.SwipeCardView.Core;
+using SwipeCardView.Sample.DAL;
 using SwipeCardView.Sample.Model;
 using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+
+
 
 namespace SwipeCardView.Sample.ViewModel
 {
     public class TinderPageViewModel : BasePageViewModel
     {
-        private ObservableCollection<Profile> _profiles = new ObservableCollection<Profile>();
+        private ObservableCollection<Profile> _profiles { get;  set; }
 
         private uint _threshold;
 
+        public Command LoadProfilesCommand { get; }
+
         public TinderPageViewModel()
         {
-            InitializeProfiles();
+            _profiles = new ObservableCollection<Profile>();
+            LoadProfilesCommand = new Command(async () => await ExecuteLoadProfilesCommand());
 
             Threshold = (uint)(App.ScreenWidth / 3);
 
             SwipedCommand = new Command<SwipedCardEventArgs>(OnSwipedCommand);
             DraggingCommand = new Command<DraggingCardEventArgs>(OnDraggingCommand);
-
+            
             ClearItemsCommand = new Command(OnClearItemsCommand);
             AddItemsCommand = new Command(OnAddItemsCommand);
         }
@@ -53,6 +61,7 @@ namespace SwipeCardView.Sample.ViewModel
         public ICommand ClearItemsCommand { get; }
 
         public ICommand AddItemsCommand { get; }
+        public bool IsBusy { get; private set; }
 
         private void OnSwipedCommand(SwipedCardEventArgs eventArgs)
         {
@@ -91,26 +100,27 @@ namespace SwipeCardView.Sample.ViewModel
         {
         }
 
-        private void InitializeProfiles()
+        async Task ExecuteLoadProfilesCommand()
         {
-            // Photos are from https://unsplash.com/. Name and Age values are fictional.
+            IsBusy = true;
 
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Laura", Age = 24, Gender = Gender.Female, Photo = "p705193.jpg", City = "Ede" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Sophia", Age = 21, Gender = Gender.Female, Photo = "p597956.jpg", City = "Den-Haag" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Anne", Age = 19, Gender = Gender.Female, Photo = "p497489.jpg", City = "Amersfoort" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Yvonne ", Age = 27, Gender = Gender.Female, Photo = "p467499.jpg", City = "Amersfoort" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Abby", Age = 25, Gender = Gender.Female, Photo = "p589739.jpg", City = "Den-Haag" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Andressa", Age = 28, Gender = Gender.Female, Photo = "p453095.jpg", City = "Amsterdam" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "June", Age = 29, Gender = Gender.Female, Photo = "p503001.jpg", City = "Amersfoort" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Kim", Age = 22, Gender = Gender.Female, Photo = "p627958.jpg", City = "Nijmegen" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Denesha", Age = 26, Gender = Gender.Female, Photo = "p474893.jpg", City = "Den-Haag" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Sasha", Age = 23, Gender = Gender.Female, Photo = "p458914.jpg", City = "Wageningen" });
-
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Austin", Age = 28, Gender = Gender.Male, Photo = "p378674.jpg", City = "Ede" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "James", Age = 32, Gender = Gender.Male, Photo = "p398931.jpg", City = "Amsterdam" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Chris", Age = 27, Gender = Gender.Male, Photo = "p401107.jpg", City = "Nijmegen" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Alexander", Age = 30, Gender = Gender.Male, Photo = "p731150.jpg", City = "Den-Haag" });
-            Profiles.Add(new Profile { ProfileId = Guid.NewGuid().ToString(), Name = "Steve", Age = 31, Gender = Gender.Male, Photo = "p327144.jpg", City = "Wageningen" });
+            try
+            {
+                _profiles.Clear();
+                var profiles = await ProfileDataStore.GetProfilesAsync(true);
+                foreach (var Profile in profiles)
+                {
+                    _profiles.Add(Profile);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+            }
+            finally
+            {
+                IsBusy = false;
+            }
         }
     }
 }

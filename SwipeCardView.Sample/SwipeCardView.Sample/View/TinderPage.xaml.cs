@@ -9,10 +9,11 @@ namespace SwipeCardView.Sample.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TinderPage : ContentPage
     {
+        TinderPageViewModel ViewModel;
         public TinderPage()
         {
             InitializeComponent();
-            BindingContext = new TinderPageViewModel();
+            BindingContext = ViewModel = new TinderPageViewModel();
 
             SwipeCardView.Dragging += OnDragging;
         }
