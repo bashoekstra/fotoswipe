@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:swipeCardView="clr-namespace:MLToolkit.Forms.SwipeCardView;assembly=MLToolkit.Forms.SwipeCardView"
              x:Class="SwipeCardView.Sample.View.TinderPage"
-             xmlns:local="clr-namespace:SwipeCardView.ViewModels"  
+             xmlns:local="clr-namespace:SwipeCardView.Sample.ViewModel"  
              BackgroundColor="#EEE"
              Title ="Tinder">
-
-    <RefreshView x:DataType="local:TinderPageViewModel" Command="{Binding LoadProfileCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-        <ContentPage.Content>
+    <ContentPage.Content>
+        <RefreshView x:DataType="local:TinderPageViewModel" Command="{Binding LoadProfilesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
             <StackLayout>
                 <swipeCardView:SwipeCardView
                 x:Name="SwipeCardView"
@@ -67,6 +66,6 @@
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
-        </ContentPage.Content>
-    </RefreshView>
+        </RefreshView>
+    </ContentPage.Content>
 </ContentPage>
