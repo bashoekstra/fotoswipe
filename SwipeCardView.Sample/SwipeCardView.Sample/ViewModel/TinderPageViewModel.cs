@@ -23,8 +23,6 @@ namespace SwipeCardView.Sample.ViewModel
         public TinderPageViewModel()
         {
             _profiles = new ObservableCollection<Profile>();
-            LoadProfilesCommand = new Command(async () => await ExecuteLoadProfilesCommand());
-
             Threshold = (uint)(App.ScreenWidth / 3);
 
             SwipedCommand = new Command<SwipedCardEventArgs>(OnSwipedCommand);
@@ -103,7 +101,7 @@ namespace SwipeCardView.Sample.ViewModel
         {
         }
 
-        async Task ExecuteLoadProfilesCommand()
+        public async void ExecuteLoadProfilesCommand()
         {
             IsBusy = true;
 

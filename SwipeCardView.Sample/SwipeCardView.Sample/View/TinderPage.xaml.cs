@@ -14,8 +14,12 @@ namespace SwipeCardView.Sample.View
         {
             InitializeComponent();
             BindingContext = ViewModel = new TinderPageViewModel();
-            
             SwipeCardView.Dragging += OnDragging;
+        }
+
+        protected override void OnAppearing()
+        {
+            ViewModel.ExecuteLoadProfilesCommand();
         }
 
         private void OnDislikeClicked(object sender, EventArgs e)

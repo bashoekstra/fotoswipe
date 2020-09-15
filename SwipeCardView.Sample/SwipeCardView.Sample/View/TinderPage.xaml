@@ -7,8 +7,9 @@
              BackgroundColor="#EEE"
              Title ="Tinder">
     <ContentPage.Content>
-        <RefreshView x:DataType="local:TinderPageViewModel" Command="{Binding LoadProfilesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
-            <StackLayout>
+        <!--<RefreshView x:DataType="local:TinderPageViewModel" Command="{Binding LoadProfilesCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">-->
+            
+        <StackLayout>
                 <swipeCardView:SwipeCardView
                 x:Name="SwipeCardView"
                 ItemsSource="{Binding Profiles}"
@@ -66,6 +67,6 @@
                     </StackLayout>
                 </StackLayout>
             </StackLayout>
-        </RefreshView>
+        <!--</RefreshView>-->
     </ContentPage.Content>
 </ContentPage>
