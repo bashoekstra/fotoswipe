@@ -4,12 +4,12 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using mobile_test.Models;
-using mobile_test.ViewModels;
+using SwipeCardView.Sample.Model;
+using SwipeCardView.Sample.ViewModel;
 using System.IO;
 using System.Threading.Tasks;
 
-namespace mobile_test.Views
+namespace SwipeCardView.Sample.View
 {
     public partial class NewItemPage : ContentPage
     {
@@ -18,7 +18,7 @@ namespace mobile_test.Views
         public NewItemPage()
         {
             InitializeComponent();
-            BindingContext = new NewItemViewModel();
+            BindingContext = new NewItemViewModel(Navigation);
         }
         public interface IPhotoPickerService
         {

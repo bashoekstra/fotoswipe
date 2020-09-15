@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using mobile_test.Models;
-using mobile_test.Views;
-using mobile_test.ViewModels;
+using SwipeCardView.Sample.Model;
+using SwipeCardView.Sample.View;
+using SwipeCardView.Sample.ViewModel;
 
-namespace mobile_test.Views
+namespace SwipeCardView.Sample.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class accauntPage : ContentPage

@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
-using mobile_test.Models;
+using SwipeCardView.Sample.Model;
+using SwipeCardView.Sample.ViewModel;
 using Xamarin.Forms;
 
-namespace mobile_test.ViewModels
+namespace SwipeCardView.Sample.ViewModel
 {
     [QueryProperty(nameof(ItemId), nameof(ItemId))]
-    public class ItemDetailViewModel : BaseViewModel
+    public class ItemDetailViewModel : BasePageViewModel
     {
         private string itemId;
         private string fullname;

@@ -4,15 +4,16 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using mobile_test.Models;
-using mobile_test.Views;
+using SwipeCardView.Sample.Model;
+using SwipeCardView.Sample.View;
 using Plugin.Media;
+using SwipeCardView.Sample.ViewModel;
 using Xamarin.Forms;
-using static mobile_test.Views.NewItemPage;
+using static SwipeCardView.Sample.View.NewItemPage;
 
-namespace mobile_test.ViewModels
+namespace SwipeCardView.Sample.ViewModel
 {
-    public class NewItemViewModel : BaseViewModel
+    public class NewItemViewModel : BasePageViewModel
     {
         private string firstname;
         private string middlename;
@@ -24,17 +25,22 @@ namespace mobile_test.ViewModels
         private string city;
         private int useridentivier;
 
-        public NewItemViewModel()
+        public NewItemViewModel(INavigation navigation)
         {
+            Navigation = navigation;
+
+            NavigateCommand = new Command<Type>(OnNavigateCommand);
+
             SaveCommand = new Command(OnSave, ValidateSave); 
             CancelCommand = new Command(OnCancel);
+
             //GalaryCommand = new Command(galary);
             //OnPickPhotoButtonClicked = new Command(OnPickPhotoButton);
             this.PropertyChanged +=
                 (_, __) => SaveCommand.ChangeCanExecute();
         }
 
-        
+
 
         private bool ValidateSave()
         {
@@ -136,37 +142,49 @@ namespace mobile_test.ViewModels
         }
 
 
+       
 
-        private async Task<ImageSource> OnPickPhotoButtonClicked()
+        public ICommand NavigateCommand { get; private set; }
+        private INavigation Navigation { get; set; }
+
+        private async void OnNavigateCommand(Type pageType)
         {
-            if (!CrossMedia.Current.IsPickPhotoSupported)
-            {
-                await DisplayAlert("Photos Not Supported",
-                           "Sorry! Permission not granted to photos.", "OK");
-                return null;
-            }
-
-            var isPermissionGranted = await RequestCameraAndGalleryPermissions();
-            if (!isPermissionGranted)
-                return null;
-
-            var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new
-                Plugin.Media.Abstractions.PickMediaOptions
-            {
-                PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium,
-            });
-
-            if (file == null)
-                return null;
-
-            var imageSource = ImageSource.FromStream(() =>
-            {
-                var stream = file.GetStream();
-                return stream;
-            });
-
-            return imageSource;
+            Page page = (Page)Activator.CreateInstance(pageType);
+            await Navigation.PushAsync(page);
         }
+
+
+
+        //private async Task<ImageSource> OnPickPhotoButtonClicked()
+        //{
+        //    if (!CrossMedia.Current.IsPickPhotoSupported)
+        //    {
+        //        await DisplayAlert("Photos Not Supported",
+        //                   "Sorry! Permission not granted to photos.", "OK");
+        //        return null;
+        //    }
+
+        //    var isPermissionGranted = await RequestCameraAndGalleryPermissions();
+        //    if (!isPermissionGranted)
+        //        return null;
+
+        //    var file = await Plugin.Media.CrossMedia.Current.PickPhotoAsync(new
+        //        Plugin.Media.Abstractions.PickMediaOptions
+        //    {
+        //        PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium,
+        //    });
+
+        //    if (file == null)
+        //        return null;
+
+        //    var imageSource = ImageSource.FromStream(() =>
+        //    {
+        //        var stream = file.GetStream();
+        //        return stream;
+        //    });
+
+        //    return imageSource;
+        //}
 
 
 

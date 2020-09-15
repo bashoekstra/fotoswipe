@@ -1,8 +1,8 @@
 ﻿using System.ComponentModel;
 using Xamarin.Forms;
-using mobile_test.ViewModels;
+using SwipeCardView.Sample.ViewModel;
 
-namespace mobile_test.Views
+namespace SwipeCardView.Sample.View
 {
     public partial class ItemDetailPage : ContentPage
     {

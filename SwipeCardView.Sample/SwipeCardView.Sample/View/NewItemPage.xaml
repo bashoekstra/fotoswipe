@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="mobile_test.Views.NewItemPage"
-             Shell.PresentationMode="ModalAnimated"
+             x:Class="SwipeCardView.Sample.View.NewItemPage"
+             xmlns:view="clr-namespace:SwipeCardView.Sample.View;assembly=SwipeCardView.Sample"
              Title="New Item">
+    <!--Shell.PresentationMode="ModalAnimated"-->
+    
+             
     <ContentPage.Content>
         <StackLayout Spacing="3" Padding="15">
             <Label Text="First Name" FontSize="Medium" />
@@ -22,10 +25,12 @@
             <Editor Text="{Binding Adress, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
             <Label Text="City" FontSize="Medium" />
             <Editor Text="{Binding City, Mode=TwoWay}" AutoSize="TextChanges" FontSize="Medium" Margin="0" />
-            <Button Text="Chose a profile picture" Command="{Binding GalaryCommand}" Clicked="OnPickPhotoButtonClicked" />
+            <!--<Button Text="Chose a profile picture" Command="{Binding GalaryCommand}" Clicked="OnPickPhotoButtonClicked" />-->
             <StackLayout Orientation="Horizontal">
-                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
-                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <!--<Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>-->
+                <Button Text="Cancel" Command="{Binding NavigateCommand}" CommandParameter="{x:Type view:LoginPage}"></Button>
+                <Button Text="Save" Command="{Binding NavigateCommand}" CommandParameter="{x:Type view:AboutPage}"></Button>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using mobile_test.ViewModels;
+using SwipeCardView.Sample.ViewModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace mobile_test.Views
+namespace SwipeCardView.Sample.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
@@ -15,7 +15,8 @@ namespace mobile_test.Views
         public LoginPage()
         {
             InitializeComponent();
-            this.BindingContext = new LoginViewModel();
+            //this.BindingContext = new LoginViewModel();
+            BindingContext = new LoginViewModel(Navigation);
         }
     }
 }

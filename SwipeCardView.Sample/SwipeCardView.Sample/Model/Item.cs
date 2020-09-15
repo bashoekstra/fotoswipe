@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace mobile_test.Models
+namespace SwipeCardView.Sample.Model
 {
     public class Item
     {

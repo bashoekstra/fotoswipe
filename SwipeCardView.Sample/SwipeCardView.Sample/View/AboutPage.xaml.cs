@@ -3,7 +3,7 @@ using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace mobile_test.Views
+namespace SwipeCardView.Sample.View
 {
     public partial class AboutPage : ContentPage
     {

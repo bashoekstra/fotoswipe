@@ -93,7 +93,9 @@ namespace MLToolkit.Forms.SwipeCardView.Tests
 
 		public string RuntimePlatform { get; set; }
 
-		public void BeginInvokeOnMainThread (Action action) 
+        public OSAppTheme RequestedTheme => throw new NotImplementedException();
+
+        public void BeginInvokeOnMainThread (Action action) 
 		{
 			if (invokeOnMainThread == null)
 				action ();
@@ -203,7 +205,17 @@ namespace MLToolkit.Forms.SwipeCardView.Tests
 
 			return new SizeRequest(new Size (100, 20));
 		}
-	}
+
+        public string GetHash(string input)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Color GetNamedColor(string name)
+        {
+            throw new NotImplementedException();
+        }
+    }
 
 	internal class MockDeserializer : IDeserializer
 	{

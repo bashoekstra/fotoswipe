@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="mobile_test.Views.accauntPage"
+             x:Class="SwipeCardView.Sample.View.accauntPage"
              Title="{Binding Title}"
-             xmlns:local="clr-namespace:mobile_test.ViewModels"  
-             xmlns:model="clr-namespace:mobile_test.Models"  
+             xmlns:local="clr-namespace:SwipeCardView.Sample.ViewModel"  
+             xmlns:model="clr-namespace:SwipeCardView.Sample.Model"  
              x:Name="BrowseItemsPage">
     <RefreshView x:DataType="local:accauntViewModel" Command="{Binding LoadItemsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}">
         <CollectionView x:Name="ItemsListView"

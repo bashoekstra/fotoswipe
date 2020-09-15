@@ -1,15 +1,15 @@
-﻿using System;
+﻿using SwipeCardView.Sample.ViewModel;
+using System;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
-namespace mobile_test.ViewModels
+namespace SwipeCardView.Sample.ViewModel
 {
-    public class AboutViewModel : BaseViewModel
+    public class AboutViewModel : BasePageViewModel
     {
         public AboutViewModel()
         {
-            Title = "About";
             OpenWebCommand = new Command(async () => await Browser.OpenAsync("https://aka.ms/xamain-quickstart"));
         }
 

@@ -5,12 +5,13 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-using mobile_test.Models;
-using mobile_test.Views;
+using SwipeCardView.Sample.Model;
+using SwipeCardView.Sample.View;
+using SwipeCardView.Sample.ViewModel;
 
-namespace mobile_test.ViewModels
+namespace SwipeCardView.Sample.ViewModel
 {
-    public class ItemsViewModel : BaseViewModel
+    public class ItemsViewModel : BasePageViewModel
     {
         private Item _selectedItem;
 

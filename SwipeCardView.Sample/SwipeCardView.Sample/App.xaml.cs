@@ -1,4 +1,3 @@
-using mobile_test.Views;
 using SwipeCardView.Sample.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
