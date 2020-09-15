@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms.Internals;
 using Profile = SwipeCardView.Sample.Model.Profile;
 
@@ -66,5 +67,12 @@ namespace SwipeCardView.Sample.DAL
 
             return await Task.FromResult(true);
         }
+
+        public async Task<Profile> GetProfileAsync(string email, string password)
+        {
+            Profile logger = (profiles.FirstOrDefault(p => p.Email == email && p.PassWord == password));
+            return await Task.FromResult(logger);
+        }
+
     }
 }

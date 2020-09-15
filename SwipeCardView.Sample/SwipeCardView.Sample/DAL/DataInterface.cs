@@ -12,5 +12,6 @@ namespace SwipeCardView.Sample.DAL
         Task<bool> DeleteProfileAsync(string Id);
         Task<p> GetProfileIdAsync(string Id);
         Task<IEnumerable<p>> GetProfilesAsync(bool forceRefresh = false);
+        Task<p> GetProfileAsync(string email, string password);
     }
 }
